@@ -1,0 +1,335 @@
+/* ── @alluxi/design-system shared theme ─────────────────────────────
+   Import this through an app's own Tailwind v4 entry:
+
+     @import "tailwindcss";
+     @import "@alluxi/design-system/theme.css";
+     @source "../../node_modules/@alluxi/design-system/dist";
+
+   It carries the canonical Alluxi token palette, the Tailwind @theme
+   mapping, base element styles, the dialog-enter keyframe and the
+   brand `.alluxi-*` component idioms. It deliberately does NOT pull in
+   `@import "tailwindcss"` or load fonts — apps own those (next/font sets
+   --font-open-sans / --font-manrope, which these tokens defer to). */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f4f7fb;
+  --foreground: #030448;
+  --alluxi-navy: #030448;
+  --alluxi-blue: #3973e7;
+  --alluxi-body: #657383;
+  --alluxi-row-alt: #f0f3ff;
+  --alluxi-total-bg: #e8ecf8;
+  --alluxi-footer-bg: #f3f6f8;
+  --alluxi-footer-text: #525f70;
+
+  --surface: #ffffff;
+  --surface-alt: #f8f9fc;
+  --surface-hover: #f0f3ff;
+  --surface-subtle: #fafbff;
+  --surface-raised: #f8faff;
+  --border: #dbe3ef;
+  --border-light: #e5eaf2;
+  --border-input: #cbd5e1;
+  --border-button: #cfd8e6;
+  --placeholder: #8b96a3;
+  --muted: #c5cdd6;
+  --primary: #030448;
+  --primary-hover: #0a0f6d;
+  --accent-orange: #e8601c;
+  --accent-orange-bg: #fff0e6;
+  --accent-orange-border: #f5c9b0;
+  --success-bg: #e8f4e8;
+  --success-text: #2d7a2d;
+  --warning-bg: #fff5e0;
+  --warning-text: #b16a00;
+  --danger-bg: #fce8e8;
+  --danger-text: #b32424;
+  --badge-bg: #eef0ff;
+}
+
+.dark {
+  --background: #0f1219;
+  --foreground: #e2e8f0;
+  --alluxi-navy: #e2e8f0;
+  --alluxi-blue: #6b9bff;
+  --alluxi-body: #94a3b8;
+  --alluxi-row-alt: #1a1f2e;
+  --alluxi-total-bg: #1e2333;
+  --alluxi-footer-bg: #151822;
+  --alluxi-footer-text: #94a3b8;
+
+  --surface: #1a1f2e;
+  --surface-alt: #151a28;
+  --surface-hover: #252b3b;
+  --surface-subtle: #1e2333;
+  --surface-raised: #1e2333;
+  --border: #2d3548;
+  --border-light: #252b3b;
+  --border-input: #374151;
+  --border-button: #374151;
+  --placeholder: #6b7280;
+  --muted: #4a5568;
+  --primary: #3973e7;
+  --primary-hover: #5b93ff;
+  --accent-orange: #f08c50;
+  --accent-orange-bg: #2d1f12;
+  --accent-orange-border: #5a3a20;
+  --success-bg: #1a2e1a;
+  --success-text: #6bc76b;
+  --warning-bg: #2c2412;
+  --warning-text: #ffba66;
+  --danger-bg: #2c1818;
+  --danger-text: #ff8c8c;
+  --badge-bg: #1e2333;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-secondary: var(--alluxi-body);
+  --color-accent: var(--alluxi-blue);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-raised: var(--surface-raised);
+  --color-stroke: var(--border);
+  --color-stroke-light: var(--border-light);
+  --color-stroke-input: var(--border-input);
+  --color-stroke-button: var(--border-button);
+  --color-hint: var(--placeholder);
+  --color-dim: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-bg: var(--accent-orange-bg);
+  --color-accent-orange-border: var(--accent-orange-border);
+  --color-success-bg: var(--success-bg);
+  --color-success-text: var(--success-text);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-text: var(--warning-text);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-text: var(--danger-text);
+  --color-badge-bg: var(--badge-bg);
+  --font-sans: var(--font-open-sans, "Open Sans", ui-sans-serif, system-ui, sans-serif);
+  --font-heading: var(--font-manrope, "Manrope", ui-sans-serif, system-ui, sans-serif);
+}
+
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-open-sans, "Open Sans"), sans-serif;
+}
+
+input,
+select,
+textarea {
+  color: var(--foreground);
+}
+
+::placeholder {
+  color: var(--placeholder);
+}
+
+@layer components {
+  .alluxi-cover-title {
+    font-family: var(--font-manrope, "Manrope"), sans-serif;
+    font-size: 26pt;
+    font-weight: 800;
+    color: var(--foreground);
+    line-height: 1.1;
+  }
+
+  .alluxi-cover-subtitle {
+    font-family: var(--font-manrope, "Manrope"), sans-serif;
+    font-size: 15pt;
+    font-weight: 600;
+    color: var(--alluxi-blue);
+  }
+
+  .alluxi-h1 {
+    font-family: var(--font-open-sans, "Open Sans"), sans-serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: var(--foreground);
+    border-bottom: 2px solid var(--foreground);
+    padding-bottom: 0.25rem;
+  }
+
+  .alluxi-h2 {
+    font-family: var(--font-open-sans, "Open Sans"), sans-serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--foreground);
+  }
+
+  .alluxi-h3 {
+    font-family: var(--font-open-sans, "Open Sans"), sans-serif;
+    font-size: 14pt;
+    font-weight: 700;
+    color: var(--foreground);
+  }
+
+  .alluxi-body {
+    font-family: var(--font-open-sans, "Open Sans"), sans-serif;
+    font-size: 11pt;
+    color: var(--alluxi-body);
+  }
+
+  .alluxi-form-input {
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-input);
+    background: var(--surface);
+    color: var(--foreground);
+    font-size: 11pt;
+    padding: 0.55rem 0.75rem;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+  }
+
+  .alluxi-form-input:focus {
+    outline: none;
+    border-color: var(--alluxi-blue);
+    box-shadow: 0 0 0 3px rgb(57 115 231 / 0.2);
+  }
+
+  /* Brand native dropdowns: drop the OS arrow for a consistent chevron. */
+  select.alluxi-form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a93a6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+    background-size: 0.85rem;
+    padding-right: 2rem;
+  }
+
+  .alluxi-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 11pt;
+    padding: 0.55rem 1rem;
+    transition: background-color 0.15s ease;
+  }
+
+  .alluxi-btn-primary:hover:not(:disabled) {
+    background: var(--primary-hover);
+  }
+
+  .alluxi-btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .alluxi-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-button);
+    background: var(--surface);
+    color: var(--foreground);
+    font-weight: 600;
+    font-size: 11pt;
+    padding: 0.5rem 0.95rem;
+    transition: background-color 0.15s ease;
+  }
+
+  .alluxi-btn-secondary:hover:not(:disabled) {
+    background: var(--surface-hover);
+  }
+
+  .alluxi-btn-secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .alluxi-card {
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+  }
+
+  .alluxi-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .alluxi-table thead th {
+    font-family: var(--font-manrope, "Manrope"), sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #fff;
+    background: #030448;
+    padding: 0.55rem 0.75rem;
+    text-align: left;
+  }
+
+  .alluxi-table tbody td {
+    font-family: var(--font-open-sans, "Open Sans"), sans-serif;
+    font-size: 10pt;
+    color: var(--alluxi-body);
+    padding: 0.55rem 0.75rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .alluxi-table tbody tr:nth-child(odd) {
+    background: var(--surface);
+  }
+
+  .alluxi-table tbody tr:nth-child(even) {
+    background: var(--alluxi-row-alt);
+  }
+
+  .alluxi-total-row td {
+    font-family: var(--font-manrope, "Manrope"), sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--foreground);
+    background: var(--alluxi-total-bg);
+  }
+}
+
+@media (max-width: 640px) {
+  @layer components {
+    .alluxi-cover-title {
+      font-size: 22pt;
+    }
+
+    .alluxi-h1 {
+      font-size: 17pt;
+    }
+
+    .alluxi-h2 {
+      font-size: 14pt;
+    }
+
+    .alluxi-h3 {
+      font-size: 12pt;
+    }
+  }
+}

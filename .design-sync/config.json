@@ -1,0 +1,13 @@
+{
+  "pkg": "@alluxi/design-system",
+  "globalName": "AxionixDS",
+  "projectId": "97baa4a8-1914-46ba-a318-b040c81d5938",
+  "shape": "package",
+  "buildCmd": "npm run build",
+  "cssEntry": "dist/styles.css",
+  "tsconfig": "tsconfig.json",
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "ConfirmDialog": { "cardMode": "column" }
+  }
+}

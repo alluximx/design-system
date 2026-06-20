@@ -1,0 +1,23 @@
+/* Standalone stylesheet for @alluxi/design-system.
+   Compiles to dist/styles.css — used for isolated rendering (claude.ai/design,
+   previews, docs). Apps should instead import the source `theme.css` through
+   their own Tailwind entry; see that file's header. */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+/* Scan the package's own components so the utilities they reference
+   (bg-surface, text-secondary, border-stroke, the lucide-dialog reds, …)
+   are emitted into the compiled stylesheet. */
+@source "../components";
+
+/* Ship the full brand token vocabulary in the standalone stylesheet so designs
+   built in claude.ai/design (which consume only this compiled CSS) can use
+   every token — not just the subset the components happen to reference.
+   Apps don't import this entry, so they stay lean (they generate what they use). */
+@source inline("bg-{background,surface,surface-alt,surface-hover,surface-subtle,surface-raised,primary,primary-hover,badge-bg,success-bg,warning-bg,danger-bg,accent,accent-orange,accent-orange-bg}");
+@source inline("text-{foreground,background,secondary,dim,hint,accent,accent-orange,primary,primary-hover,success-text,warning-text,danger-text}");
+@source inline("border-{stroke,stroke-light,stroke-input,stroke-button}");
+@source inline("divide-{stroke,stroke-light}");
+@source inline("font-{sans,heading}");
+
+@import "./theme.css";

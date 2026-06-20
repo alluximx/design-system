@@ -1,0 +1,10 @@
+node_modules
+dist
+*.tsbuildinfo
+
+# design-sync converter scratch (durable inputs under .design-sync/ stay tracked)
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
