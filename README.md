@@ -1,5 +1,8 @@
 # @alluxi/design-system
 
+[![npm version](https://img.shields.io/npm/v/@alluxi/design-system?color=cb3837&logo=npm)](https://www.npmjs.com/package/@alluxi/design-system)
+[![license](https://img.shields.io/npm/l/@alluxi/design-system?color=3973e7)](./LICENSE)
+
 Shared design system for the Alluxi / Axionix suite — the canonical brand tokens
 and a small set of React primitives that every app (and the marketing site)
 builds on. It is the single source of truth for the Alluxi palette, type scale,
